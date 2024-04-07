@@ -4,9 +4,11 @@ console.log("path.join(__dirname, './')", path.join(__dirname, "../dist"));
 module.exports = {
   entry: {
     todo: "./src/todo/todo.jsx",
+    calculator: "./src/calculator/calculator.jsx",
+
   },
   output: {
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "../", "dist"),
     publicPath: "",
   },
@@ -49,10 +51,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "todo.html",
       chunks: ["todo"],
-      title: "Hello world",
-      template: "src/page-template.html",
-      description: "Hello world",
+      title: "Todo",
+      template: "src/page-template.hbs",
+      description: "",
       minify: false,
     }),
+    new HtmlWebpackPlugin({
+        filename: "calculator.html",
+        chunks: ["calculator"],
+        title: "Calculator",
+        template: "src/page-template.hbs",
+        description: "",
+        minify: false,
+      }),
   ],
 };

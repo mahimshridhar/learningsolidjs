@@ -1,0 +1,24 @@
+.todo ul .remove, .complete {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.todo .completed {
+    text-decoration: line-through;
+}
+
+.todo ul {
+    padding-left: 0px;
+}
+
+.todo ul .listItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.todo ul .listItem .listItemTitle {
+    display: inline-block;
+    width: 250px;
+    word-wrap: break-word;
+}
