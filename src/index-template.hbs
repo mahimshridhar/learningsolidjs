@@ -9,9 +9,13 @@
 </head>
 <body>
 <h1>Solid js examples</h1>
-
-<a href="./todo.html">todo</a>
-<a href="./calculator.html">calculator</a>
+  <ul>
+    {{#each htmlWebpackPlugin.options.apps}}
+    <li>
+      <a href="./{{this}}.html">{{this}}</a>
+    </li>
+  {{/each}}
+  </ul>
 
 </body>
 </html>

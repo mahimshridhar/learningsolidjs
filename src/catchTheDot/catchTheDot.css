@@ -1,0 +1,17 @@
+.catchTheDot .dot {
+  margin-top: 10px;
+  background-color: lightgray;
+  border-radius: 50%;
+  transition: all 0.6s ease-in-out;
+  text-align: center;
+  color: white;
+}
+
+.catchTheDot .timer {
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  opacity: 0.1;
+  font-size: 60px;
+}

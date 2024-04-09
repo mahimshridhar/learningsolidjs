@@ -1,12 +1,26 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-console.log("path.join(__dirname, './')", path.join(__dirname, "../dist"));
-module.exports = {
-  entry: {
-    todo: "./src/todo/todo.jsx",
-    calculator: "./src/calculator/calculator.jsx",
 
-  },
+const apps = ["todo", "calculator", "catchTheDot", "alphabetInvasion"]
+
+const entry = apps.reduce((entryObject, app) => {
+  entryObject[app] = `./src/${app}/${app}.jsx`
+  return entryObject
+}, {})
+
+const htmlFilesToBeEmitted = apps.map((app) => {
+  return new HtmlWebpackPlugin({
+    filename: `${app}.html`,
+    chunks: [app],
+    title: app,
+    template: "src/page-template.hbs",
+    description: "",
+    minify: false,
+  })
+})
+
+module.exports = {
+  entry,
   output: {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "../", "dist"),
@@ -47,22 +61,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: "src/index-template.hbs",
+      apps,
+      inject:false
     }),
-    new HtmlWebpackPlugin({
-      filename: "todo.html",
-      chunks: ["todo"],
-      title: "Todo",
-      template: "src/page-template.hbs",
-      description: "",
-      minify: false,
-    }),
-    new HtmlWebpackPlugin({
-        filename: "calculator.html",
-        chunks: ["calculator"],
-        title: "Calculator",
-        template: "src/page-template.hbs",
-        description: "",
-        minify: false,
-      }),
+    ...htmlFilesToBeEmitted
   ],
 };
