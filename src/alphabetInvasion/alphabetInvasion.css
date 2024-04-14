@@ -1,0 +1,7 @@
+.alphabetInvasion ul {
+    list-style-type: none;
+}
+
+.alphabetInvasion span:not(:first-child) {
+    margin-left:20px;
+}
